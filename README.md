@@ -44,3 +44,55 @@ L2 Normalization
 Cosine Similarity
        ↓
 Identification / Verification
+## Evaluation Results
+
+The model was evaluated for both identification and verification.
+
+| Metric | Result |
+|---|---:|
+| P1 R@1 | 0.889 |
+| P1 mAP | 0.936 |
+| P1 R@1 (Held-out Family) | 0.842 |
+| P2 R@1 | 0.874 |
+| P2 Trap@1 | 0.000 |
+| P3 R@1 | 0.923 |
+| P4 R@1 | 0.556 |
+| Verification AUC | 0.987 |
+| Verification EER | 0.054 |
+| TAR @ FAR = 1% | 0.679 |
+| Same-Palette AUC | 0.987 |
+| Verification Accuracy | 0.949 |
+
+### Baseline Comparison
+
+The proposed color-invariant embedding model was compared against zero-shot RGB and grayscale baselines.
+
+| Model | P1 R@1 | P1 mAP | P3 R@1 | Verification AUC |
+|---|---:|---:|---:|---:|
+| Proposed ConvNeXt-Atto | 0.889 | 0.936 | 0.923 | 0.987 |
+| Zero-shot Grayscale | 0.599 | 0.699 | 0.702 | 0.874 |
+| Zero-shot RGB | 0.459 | 0.561 | 0.551 | 0.810 |
+
+## Implementation Note
+
+The implementation was developed with reference to the public color-invariant saree recognition implementation and adapted/run for this evaluation. The proprietary DeepLure dataset is not included in this repository.
+
+## Dataset
+
+The DeepLure dataset is proprietary and is therefore not redistributed in this repository.
+
+The notebook expects the dataset to be available in the Kaggle environment.
+
+## Limitations
+
+- Performance on real re-photographed sarees is lower than on controlled evaluation settings.
+- The dataset does not provide explicit design labels for every image.
+- Verification performance depends on the selected validation threshold.
+
+## Future Work
+
+- Improve robustness to real-world lighting and camera variations.
+- Explore stronger transformer-based architectures.
+- Add larger-scale hard-negative mining.
+- Improve real re-photo performance.
+- Deploy the embedding model as an efficient similarity-search service.
